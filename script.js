@@ -71,13 +71,18 @@ numbers.forEach(function(numberButton) {
             numberOne.push(this.value);
             console.log('one '+numberOne);
             operatorClicked = false;
-            showThis = numberOne.join('');
-            enter.textContent = showThis;
+            if(numberOne.length<25){
+                showThis = numberOne.join('');
+                enter.textContent = showThis;
+            }
+            
         } else {
             numberTwo.push(this.value);
             console.log('two '+numberTwo);
-            showThis = numberTwo.join('');
-            enter.textContent = showThis;
+            if(numberTwo.length<25){
+                showThis = numberTwo.join('');
+                enter.textContent = showThis;
+            }
         }
     });
 });
@@ -85,9 +90,14 @@ numbers.forEach(function(numberButton) {
 let operators = document.querySelectorAll('.operators');
 operators.forEach(function(operatorButton) {
     operatorButton.addEventListener('click', function() {
-        if(numberOne.length>0){
+        if(numberOne.length>0 && numberOne.length<25){
         displayResult.textContent = numberOne.join('');
         }
+        else if(numberOne.length>25){
+            let copiedArray = numberOne.slice(0, 24);
+            displayResult.textContent = copiedArray.join('');
+        }
+        
         operatorClicked = true;
         whichOperator = this.value;
     });
