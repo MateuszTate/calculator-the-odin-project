@@ -67,26 +67,31 @@ let showThis;
 let numbers = document.querySelectorAll('.numbers');
 numbers.forEach(function(numberButton) {
     numberButton.addEventListener('click', function() {
-        
-        if (!operatorClicked || numberOne.length == 0) {
-            numberOne.push(this.value);
-            console.log('one '+numberOne);
-            operatorClicked = false;
-            if(numberOne.length<25){
-                showThis = numberOne.join('');
-                enter.textContent = showThis;
-            }
-            
-        } else {
-            numberTwo.push(this.value);
-            console.log('two '+numberTwo);
-            if(numberTwo.length<25){
-                showThis = numberTwo.join('');
-                enter.textContent = showThis;
-            }
+      if (!operatorClicked || numberOne.length === 0) {
+        if (this.value === '.' && numberOne.includes('.')) {
+          return;
         }
+        numberOne.push(this.value);
+        console.log('one ' + numberOne);
+        operatorClicked = false;
+        if (numberOne.length < 25) {
+          showThis = numberOne.join('');
+          enter.textContent = showThis;
+        }
+      } else {
+        if (this.value === '.' && numberTwo.includes('.')) {
+          return;
+        }
+        numberTwo.push(this.value);
+        console.log('two ' + numberTwo);
+        if (numberTwo.length < 25) {
+          showThis = numberTwo.join('');
+          enter.textContent = showThis;
+        }
+      }
     });
-});
+  });
+  
 
 let operators = document.querySelectorAll('.operators');
 operators.forEach(function(operatorButton) {
@@ -230,10 +235,9 @@ buttons.forEach(function(button) {
 document.addEventListener('keydown', function(event) {
     const key = event.key;
   
-    // Sprawdź, czy naciśnięty klawisz odpowiada konkretnemu przyciskowi
     if (key === '1') {
       const button = document.querySelector('.numbers[value="1"]');
-      button.click(); // Wywołaj zdarzenie kliknięcia na przycisku
+      button.click();
     } else if (key === '2') {
       const button = document.querySelector('.numbers[value="2"]');
       button.click();
