@@ -226,4 +226,83 @@ buttons.forEach(function(button) {
 
 
 
+
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+  
+    // Sprawdź, czy naciśnięty klawisz odpowiada konkretnemu przyciskowi
+    if (key === '1') {
+      const button = document.querySelector('.numbers[value="1"]');
+      button.click(); // Wywołaj zdarzenie kliknięcia na przycisku
+    } else if (key === '2') {
+      const button = document.querySelector('.numbers[value="2"]');
+      button.click();
+    } else if (key === '3') {
+      const button = document.querySelector('.numbers[value="3"]');
+      button.click();
+    } else if (key === '4') {
+      const button = document.querySelector('.numbers[value="4"]');
+      button.click();
+    } else if (key === '5') {
+      const button = document.querySelector('.numbers[value="5"]');
+      button.click();
+    }
+    else if (key === '6') {
+        const button = document.querySelector('.numbers[value="6"]');
+        button.click();
+    } else if (key === '7') {
+    const button = document.querySelector('.numbers[value="7"]');
+    button.click();
+    } else if (key === '8') {
+    const button = document.querySelector('.numbers[value="8"]');
+    button.click();
+    } else if (key === '9') {
+    const button = document.querySelector('.numbers[value="9"]');
+    button.click();
+    } else if (key === '0') {
+    const button = document.querySelector('.numbers[value="0"]');
+    button.click();
+    }
+    else if (key === ',' || key === '.') {
+    const button = document.querySelector('.numbers[value="."]');
+    button.click();
+    }
+
+    else if (key === 'Enter' || key === '=') {
+        const button = document.querySelector('.equal');
+        button.click();
+      }
+
+      else if (key === '+' && event.shiftKey) {
+        const button = document.querySelector('.operators[value="+"]');
+        button.click();
+      }
+      else if (key === '-') {
+        const button = document.querySelector('.operators[value="-"]');
+        button.click();
+      }
+
+      else if (key === '*' && event.shiftKey) {
+        const button = document.querySelector('.operators[value="*"]');
+        button.click();
+      }
+      else if (key === '/') {
+        event.preventDefault()
+        const button = document.querySelector('.operators[value="/"]');
+        button.click();
+      }
+      else if (key === '%' && event.shiftKey) {
+        const button = document.querySelector('.operators[value="%"]');
+        button.click();
+      }
+      else if (key === 'c') {
+        const button = document.querySelector('.ac[value="ac"]');
+        button.click();
+      }
+      else if (key === 'Backspace') {
+        const button = document.querySelector('.del[value="del"]');
+        button.click();
+      }
+
+  });
   
