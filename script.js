@@ -67,6 +67,7 @@ let showThis;
 let numbers = document.querySelectorAll('.numbers');
 numbers.forEach(function(numberButton) {
     numberButton.addEventListener('click', function() {
+        
         if (!operatorClicked || numberOne.length == 0) {
             numberOne.push(this.value);
             console.log('one '+numberOne);
@@ -162,12 +163,14 @@ equal.addEventListener('click', function() {
         console.log(numberTwo)
     }
     else{
+    enterClicked = false;
     numberOne = result;
     console.log(numberOne);
     result = result.join('');
     result = result.toString();
     displayResult.textContent = result;
     enter.textContent = 0;
+    
     }
     
 
@@ -188,11 +191,11 @@ ac.addEventListener('click', function() {
 
 let del = document.querySelector('.del');
 del.addEventListener('click', function(){
-    if(!operatorClicked && numberOne.length>0){
+    if(!operatorClicked && numberOne.length>0 && !enterClicked){
         let popped = numberOne.pop();
         let test = [...numberOne];
         if(test.length>0){
-        enter.textContent = numberOne;
+        enter.textContent = numberOne.join('');
         }
         else enter.textContent = 0;
         console.log('one ' + numberOne);
@@ -201,9 +204,26 @@ del.addEventListener('click', function(){
         let popped = numberTwo.pop();
         let test = [...numberTwo];
         if(test.length>0){
-        enter.textContent = numberTwo;
+        enter.textContent = numberTwo.join('');
         }
         else enter.textContent = 0;
         console.log('two ' + numberTwo);
     }
 })
+
+let buttons = document.querySelectorAll('button');
+buttons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    button.style.backgroundColor = 'black';
+    button.style.color = 'white';
+
+    setTimeout(function() {
+      button.style.backgroundColor = '';
+      button.style.color = '';
+    }, 75);
+  });
+});
+
+
+
+  
